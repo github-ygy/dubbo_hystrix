@@ -23,6 +23,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>ygy.test.dubbo.hystrix</groupId>
+			<artifactId>db_api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>

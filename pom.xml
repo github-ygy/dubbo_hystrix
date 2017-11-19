@@ -14,6 +14,7 @@
     <modules>
         <module>db_web</module>
         <module>db_service</module>
+        <module>db_api</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -42,6 +43,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
         </dependency>
     </dependencies>
 
