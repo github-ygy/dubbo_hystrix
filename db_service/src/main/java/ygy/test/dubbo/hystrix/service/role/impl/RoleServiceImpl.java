@@ -11,6 +11,7 @@ import java.util.List;
  * Created by guoyao on 2017/11/19.
  */
 @Service("roleService")
+@com.alibaba.dubbo.config.annotation.Service(version = "1.0.0")
 public class RoleServiceImpl implements RoleService {
 
     @Override
