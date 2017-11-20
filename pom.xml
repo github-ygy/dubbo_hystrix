@@ -15,6 +15,7 @@
         <module>db_web</module>
         <module>db_service</module>
         <module>db_api</module>
+        <module>io_web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
