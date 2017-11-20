@@ -6,14 +6,32 @@
        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:application name="role-consumer" />
     <dubbo:annotation/>
-    <!--<dubbo:registry address="multicast://127.0.0.1:1234" />-->
-    <dubbo:registry address="zookeeper://47.94.200.13:2181"  />
+
+    <!--
+        check = false ;true注册订阅失败时报错
+     -->
+    <dubbo:registry address="zookeeper://47.94.200.13:2181"   />
     <dubbo:protocol name="dubbo" port="20880" />
 
     <!--<dubbo:service interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService"/>-->
     <!--
         check : 依赖检查，默认true，false关闭，防止服务未被提供，影响spring加载。 true，没有服务提供者，throw exception
         <dubbo:consumer check="false" /> 关闭所有服务的依赖检查
+        集群容错模式：配置方式 <dubbo:reference cluster="failsafe" />
+            Failover Cluster（缺省）  失败重试，常用语读操作，但重试会带来更长延迟
+                <dubbo:reference retries="2" /> 或   <dubbo:method name="findFoo" retries="2" />
+
+            Failfast Cluster 快速失败，只发起⼀次调⽤，失败⽴即报错。通常⽤于⾮幂等性的写操作，⽐如新增记录
+
+            Failsafe Cluster 失败安全，出现异常时，直接忽略。通常⽤于写⼊审计⽇志等操作。
+
+            Failback Cluster 失败⾃动恢复，后台记录失败请求，定时重发。通常⽤于消息通知操作。
+
+            Forking Cluster 并⾏调⽤多个服务器，只要⼀个成功即返回。通常⽤于实时性要求较⾼的读操作，
+            但需要浪费更多服务资源。可通过forks="2" 来设置最⼤并⾏数。
+
+            Broadcast Cluster  ⼴播调⽤所有提供者，逐个调⽤，任意⼀台报错则报错 。
+            通常⽤于通知所有提供者更新缓存或⽇志等本地资源信息。
     -->
-    <dubbo:reference id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService"  check="false"/>
+    <dubbo:reference cluster="forking" id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService"  check="false"/>
 </beans>
