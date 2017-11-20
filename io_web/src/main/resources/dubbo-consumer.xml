@@ -11,5 +11,9 @@
     <dubbo:protocol name="dubbo" port="20880" />
 
     <!--<dubbo:service interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService"/>-->
-    <!--<dubbo:reference id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService" />-->
+    <!--
+        check : 依赖检查，默认true，false关闭，防止服务未被提供，影响spring加载。 true，没有服务提供者，throw exception
+        <dubbo:consumer check="false" /> 关闭所有服务的依赖检查
+    -->
+    <dubbo:reference id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService"  check="false"/>
 </beans>
