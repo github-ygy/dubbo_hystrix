@@ -22,6 +22,6 @@
                 limited：可伸缩线程池，但池中的线程数只会增⻓不会收缩。只增⻓不收缩的⽬的是为了避免收缩时突然来了⼤流量引起的性能问题
     -->
     <dubbo:protocol name="dubbo" port="20880" />
-    <dubbo:service interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService"/>
+    <dubbo:service weight="1000" interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService"/>
     <!--<dubbo:reference id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService" />-->
 </beans>
