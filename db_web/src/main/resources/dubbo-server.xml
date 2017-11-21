@@ -6,6 +6,12 @@
        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:application name="role-server" />
     <!--<dubbo:registry address="multicast://127.0.0.1:1234" />-->
+    <!--
+        registry = false :只订阅，可以让服务提供者开发⽅，只订阅服务(开发的服务可能依赖其它服务)，
+        ⽽不注册正在开发的服务，通过直连测试正在开发的服务。
+
+        subscribe=false :只注册，可以让服务提供者⽅只注册服务到另⼀注册中⼼，⽽不从另⼀注册中⼼订阅服务。
+    -->
     <dubbo:registry address="zookeeper://47.94.200.13:2181"  />
     <dubbo:annotation/>
     <!--
