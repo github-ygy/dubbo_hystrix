@@ -1,4 +1,4 @@
-package dh_web;
+package ygy.test.dubbo.hystrix;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +11,7 @@ public class DemoApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("ok");
 	}
 
 }
