@@ -49,5 +49,17 @@
             缺省只对第⼀个参数 Hash，如果要修改，请配置 <dubbo:parameter key="hash.arguments" value="0,1" />
             缺省⽤ 160 份虚拟节点，如果要修改，请配置 <dubbo:parameter key="hash.nodes" value="320" />
     -->
-    <dubbo:reference cluster="broadcast" loadbalance="random"  id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService"  check="false"/>
+  <!--  <dubbo:reference cluster="broadcast"
+                     loadbalance="random"
+                     id="roleService"
+                     interface="ygy.test.dubbo.hystrix.service.role.RoleService"
+                     check="false"/>-->
+
+    <!--直连提供者 url="dubbo://47.94.200.13:20880" 绕过注册中心直连，常用于测试 -->
+    <dubbo:reference url="dubbo://47.94.200.13:20880"
+                     cluster="broadcast"
+                     loadbalance="random"
+                     id="roleService"
+                     interface="ygy.test.dubbo.hystrix.service.role.RoleService"
+                     check="false"/>
 </beans>
