@@ -8,6 +8,19 @@
     <!--<dubbo:registry address="multicast://127.0.0.1:1234" />-->
     <dubbo:registry address="zookeeper://47.94.200.13:2181"  />
     <dubbo:annotation/>
+    <!--
+        线程模型： <dubbo:protocol name="dubbo" dispatcher="all" threadpool="fixed" threads="100" />
+            dispatcher
+                all ：所有消息都派发到线程池，包括请求，响应，连接事件，断开事件，.跳等
+                direct ：所有消息都不派发到线程池，全部在 IO 线程上直接执.。
+                message ：只有请求响应消息派发到线程池，其它连接断开事件，.跳等消息，直接在 IO 线程上执.
+                execution ：只请求消息派发到线程池，不含响应，响应和其它连接断开事件，⼼跳等消息，直接在 IO 线程上执⾏。
+                connection ：在 IO 线程上，将连接断开事件放⼊队列，有序逐个执⾏，其它消息派发到线程池。
+             ThreadPool：
+                fixed ：固定⼤⼩线程池，启动时建⽴线程，不关闭，⼀直持有。(缺省)
+                cached ：缓存线程池，空闲⼀分钟⾃动删除，需要时重建。
+                limited：可伸缩线程池，但池中的线程数只会增⻓不会收缩。只增⻓不收缩的⽬的是为了避免收缩时突然来了⼤流量引起的性能问题
+    -->
     <dubbo:protocol name="dubbo" port="20880" />
     <dubbo:service interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService"/>
     <!--<dubbo:reference id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService" />-->
