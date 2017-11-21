@@ -49,9 +49,16 @@
             当某.台提供者挂时，原本发往该提供者的请求，基于虚拟节点，平摊到其它提供者，不会引起剧烈变动
             缺省只对第⼀个参数 Hash，如果要修改，请配置 <dubbo:parameter key="hash.arguments" value="0,1" />
             缺省⽤ 160 份虚拟节点，如果要修改，请配置 <dubbo:parameter key="hash.nodes" value="320" />
+
+
+          结果缓存：
+               lru 基于最近最少使⽤原则删除多余缓存，保持最热的数据被缓存（缺省大小为1001）
+               threadlocal 当前线程缓存
+               jcache 与 JSR107 集成，可以桥接各种缓存实现
     -->
     <dubbo:reference cluster="failover"
                      loadbalance="leastactive"
+                     cache="lru"
                      id="roleService"
                      interface="ygy.test.dubbo.hystrix.service.role.RoleService"
                      check="false"/>

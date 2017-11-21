@@ -10,4 +10,6 @@ import java.util.List;
 public interface RoleService {
 
     public List<StudentDto> getAllStudent();
+
+    public List<StudentDto> getAllStudent(Integer i);
 }

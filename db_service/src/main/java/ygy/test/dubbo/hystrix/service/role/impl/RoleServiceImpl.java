@@ -8,6 +8,7 @@ import ygy.test.dubbo.hystrix.dto.StudentDto;
 import ygy.test.dubbo.hystrix.service.role.RoleService;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -23,13 +24,15 @@ public class RoleServiceImpl implements RoleService {
 
     private static final AtomicLong ATOMIC_LONG=new AtomicLong(0);
 
+    private static final AtomicInteger atomicInteger=new AtomicInteger(0);
+
     @Override
     public List<StudentDto> getAllStudent()  {
         log.info(" getAllStudent invoke " + modul);
         List<StudentDto> sLists=Lists.newArrayList();
         StudentDto studentDto=new StudentDto();
         studentDto.setName("test");
-        studentDto.setAge(25);
+        studentDto.setAge(atomicInteger.incrementAndGet());
         studentDto.setSex(1);
         sLists.add(studentDto);
         try {
@@ -40,4 +43,18 @@ public class RoleServiceImpl implements RoleService {
         log.warn(" -----------------------count = " + ATOMIC_LONG.incrementAndGet());
         return sLists;
     }
+    @Override
+    public List<StudentDto> getAllStudent(Integer i)  {
+        log.info(" getAllStudent invoke " + modul);
+        List<StudentDto> sLists=Lists.newArrayList();
+        StudentDto studentDto=new StudentDto();
+        studentDto.setName("test"+i);
+        studentDto.setAge(atomicInteger.incrementAndGet());
+        studentDto.setSex(1);
+        sLists.add(studentDto);
+        log.warn(" -----------------------count = " + i);
+        return sLists;
+    }
+
+
 }
