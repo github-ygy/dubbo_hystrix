@@ -43,6 +43,7 @@
 
             LeastActive LoadBalance 最少活跃调⽤数，相同活跃数的随机，活跃数指调⽤前后计数差
             使慢的提供者收到更少请求，因为越慢的提供者的调⽤前后计数差会越⼤
+            如果使用该种负载均衡算法,则dubbo:service中还需要配置filter="activelimit"
 
             ConsistentHash LoadBalance  ⼀致性 Hash，相同参数的请求总是发到同⼀提供者
             当某.台提供者挂时，原本发往该提供者的请求，基于虚拟节点，平摊到其它提供者，不会引起剧烈变动
