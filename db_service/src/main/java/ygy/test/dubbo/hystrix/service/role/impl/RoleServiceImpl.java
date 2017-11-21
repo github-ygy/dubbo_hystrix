@@ -8,6 +8,7 @@ import ygy.test.dubbo.hystrix.dto.StudentDto;
 import ygy.test.dubbo.hystrix.service.role.RoleService;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by guoyao on 2017/11/19.
@@ -19,6 +20,8 @@ public class RoleServiceImpl implements RoleService {
     private static final Logger log=LoggerFactory.getLogger(RoleServiceImpl.class);
 
     String modul="db_service";
+
+    private static final AtomicLong ATOMIC_LONG=new AtomicLong(0);
 
     @Override
     public List<StudentDto> getAllStudent()  {
@@ -34,7 +37,7 @@ public class RoleServiceImpl implements RoleService {
         //} catch (Exception e) {
         //
         //}
-
+        log.warn(" -----------------------count = " + ATOMIC_LONG.incrementAndGet());
         return sLists;
     }
 }
