@@ -32,11 +32,11 @@ public class RoleServiceImpl implements RoleService {
         studentDto.setAge(25);
         studentDto.setSex(1);
         sLists.add(studentDto);
-        //try {
-        //    Thread.sleep(5000);
-        //} catch (Exception e) {
-        //
-        //}
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+
+        }
         log.warn(" -----------------------count = " + ATOMIC_LONG.incrementAndGet());
         return sLists;
     }

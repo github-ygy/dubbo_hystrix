@@ -51,7 +51,7 @@
             缺省⽤ 160 份虚拟节点，如果要修改，请配置 <dubbo:parameter key="hash.nodes" value="320" />
     -->
     <dubbo:reference cluster="failover"
-                     loadbalance="roundrobin"
+                     loadbalance="leastactive"
                      id="roleService"
                      interface="ygy.test.dubbo.hystrix.service.role.RoleService"
                      check="false"/>
