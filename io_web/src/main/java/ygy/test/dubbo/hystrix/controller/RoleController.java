@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ygy.test.dubbo.hystrix.dto.StudentDto;
+import ygy.test.dubbo.hystrix.listener.RoleCallbackListener;
 import ygy.test.dubbo.hystrix.service.role.RoleService;
 
 import java.util.List;
@@ -30,8 +31,15 @@ public class RoleController {
     private RoleService roleService ;   //使用xml 配置时，可用autowired注入
 
     @RequestMapping("testConsumer")
-    public Object testConsumer() {
-        return roleService.getAllStudent();
+    public Object testConsumer(@RequestParam String key ) {
+        roleService.addListener(key, new RoleCallbackListener() {
+            @Override
+            public void changed(String msg) {
+                System.out.println("callback ---------:" + msg);
+            }
+        });
+        //return roleService.getAllStudent();
+        return  null ;
     }
 
     @RequestMapping("testAsyn")

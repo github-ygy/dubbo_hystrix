@@ -38,6 +38,11 @@
             2.统一服务不同协议
                 <dubbo:service interface="HelloService" version="1.0.0" protocol="dubbo,hessian" />
     -->
-    <dubbo:service weight="1000" interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService"/>
-    <!--<dubbo:reference id="roleService" interface="ygy.test.dubbo.hystrix.service.role.RoleService" />-->
+    <dubbo:service weight="100" interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService" callbacks="100">
+        <dubbo:method name="addListener" connections="1" >
+            <dubbo:argument index="1" callback="true"/>
+            <!--<dubbo:argument type="ygy.test.dubbo.hystrix.listener.RoleCallbackListener" callback="true" />-->
+        </dubbo:method>
+    </dubbo:service>
+
 </beans>
