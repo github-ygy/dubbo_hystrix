@@ -57,4 +57,18 @@ public class RoleServiceImpl implements RoleService {
     }
 
 
+    @Override
+    public StudentDto getByIdAsyc(Integer id) {
+        log.info(" getByIdAsyc id = " + id);
+        StudentDto studentDto=new StudentDto();
+        studentDto.setName("test"+id);
+        studentDto.setAge(atomicInteger.incrementAndGet());
+        studentDto.setSex(1);
+        try {
+            Thread.sleep(3000);   //睡眠三秒，测试异步
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return studentDto;
+    }
 }

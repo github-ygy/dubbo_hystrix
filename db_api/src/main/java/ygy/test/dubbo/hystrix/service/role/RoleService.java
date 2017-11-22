@@ -12,4 +12,6 @@ public interface RoleService {
     public List<StudentDto> getAllStudent();
 
     public List<StudentDto> getAllStudentByParam(Integer i);
+
+    public StudentDto getByIdAsyc(Integer id);
 }
