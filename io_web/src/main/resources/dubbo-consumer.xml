@@ -49,10 +49,6 @@
             当某.台提供者挂时，原本发往该提供者的请求，基于虚拟节点，平摊到其它提供者，不会引起剧烈变动
             缺省只对第⼀个参数 Hash，如果要修改，请配置 <dubbo:parameter key="hash.arguments" value="0,1" />
             缺省⽤ 160 份虚拟节点，如果要修改，请配置 <dubbo:parameter key="hash.nodes" value="320" />
-
-
-
-
     -->
     <dubbo:reference cluster="failover"
                      loadbalance="leastactive"
@@ -73,6 +69,9 @@
         <dubbo:method name="getByIdAsyc" async="true"  onreturn="roleNotify.onreturn" onthrow="roleNotify.onreturn"  timeout="5000" />
     </dubbo:reference>
     <bean id="roleNotify" class="ygy.test.dubbo.hystrix.notify.RoleNotify" />
+
+    <dubbo:reference id="studentService" interface="ygy.test.dubbo.hystrix.service.role.StudentService" stub="ygy.test.dubbo.hystrix.service.StudentServiceStub">
+    </dubbo:reference>
 
     <!--直连提供者 url="dubbo://47.94.200.13:20880" 绕过注册中心直连，常用于测试 -->
    <!-- <dubbo:reference url="dubbo://47.94.200.13:20880"
