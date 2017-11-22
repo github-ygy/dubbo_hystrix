@@ -64,9 +64,15 @@
                threadlocal 当前线程缓存
                jcache 与 JSR107 集成，可以桥接各种缓存实现 -->
         <dubbo:method name="getAllStudentByParam" cache="lru" />
-        <!-- 异步调用 -->
-        <dubbo:method name="getByIdAsyc" async="true" timeout="5000" />
+        <!-- 异步调用 并含有事件通知
+            async = true 异步调用
+            oninvoke ：调用前
+            onreturn ： 结果返回
+            onthrow ：发生异常
+        -->
+        <dubbo:method name="getByIdAsyc" async="true"  onreturn="roleNotify.onreturn" onthrow="roleNotify.onreturn"  timeout="5000" />
     </dubbo:reference>
+    <bean id="roleNotify" class="ygy.test.dubbo.hystrix.notify.RoleNotify" />
 
     <!--直连提供者 url="dubbo://47.94.200.13:20880" 绕过注册中心直连，常用于测试 -->
    <!-- <dubbo:reference url="dubbo://47.94.200.13:20880"
