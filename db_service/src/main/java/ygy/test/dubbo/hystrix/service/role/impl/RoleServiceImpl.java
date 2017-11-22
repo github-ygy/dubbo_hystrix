@@ -44,7 +44,7 @@ public class RoleServiceImpl implements RoleService {
         return sLists;
     }
     @Override
-    public List<StudentDto> getAllStudent(Integer i)  {
+    public List<StudentDto> getAllStudentByParam(Integer i)  {
         log.info(" getAllStudent invoke " + modul);
         List<StudentDto> sLists=Lists.newArrayList();
         StudentDto studentDto=new StudentDto();
