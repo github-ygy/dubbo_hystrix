@@ -11,5 +11,5 @@ public interface RoleService {
 
     public List<StudentDto> getAllStudent();
 
-    public List<StudentDto> getAllStudent(Integer i);
+    public List<StudentDto> getAllStudentByParam(Integer i);
 }

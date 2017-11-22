@@ -30,15 +30,15 @@ public class RoleController {
 
     @RequestMapping("testCache")
     public Object testCache() {
-        log.warn(JSONObject.toJSONString(roleService.getAllStudent(0)));
+        log.warn(JSONObject.toJSONString(roleService.getAllStudentByParam(0)));
         for(int i = 0;i<5;i++) {
-            log.info("------------------"+ JSONObject.toJSONString(roleService.getAllStudent(0)));
+            log.info("------------------"+ JSONObject.toJSONString(roleService.getAllStudentByParam(0)));
         }
         System.out.println("===========================================================================");
         for(int i = 0;i < 1001;i++) {  //执行1001次
-            log.info("------------------"+ JSONObject.toJSONString(roleService.getAllStudent(i)));
+            log.info("------------------"+ JSONObject.toJSONString(roleService.getAllStudentByParam(i)));
         }
-        return roleService.getAllStudent(0);  //lru 会移除第一个缓存
+        return roleService.getAllStudentByParam(0);  //lru 会移除第一个缓存
     }
 
 }
