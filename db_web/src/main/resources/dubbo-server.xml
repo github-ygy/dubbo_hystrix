@@ -54,6 +54,6 @@
     <!--
         executes:控制服务端线程数量为10
     -->
-    <dubbo:service weight="100" executes="10" timeout="3000" interface="ygy.test.dubbo.hystrix.service.role.BarService" ref="barService" />
+    <dubbo:service weight="100" executes="10" timeout="10000" interface="ygy.test.dubbo.hystrix.service.role.BarService" ref="barService" />
 
 </beans>

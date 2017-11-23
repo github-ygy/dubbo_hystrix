@@ -8,6 +8,7 @@ import ygy.test.dubbo.hystrix.dto.StudentDto;
 import ygy.test.dubbo.hystrix.service.role.BarService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -35,12 +36,12 @@ public class BarServiceImpl implements BarService {
         resultList.add(studentDto1);
         resultList.add(studentDto2);
         try {
-            //Thread.sleep(5000);   //模拟超时，rpc 异常，降级服务
-            Thread.sleep(500);   //睡眠500毫秒，模拟线程控制并发
+            Thread.sleep(5000);   //模拟超时，rpc 异常，降级服务
+            //Thread.sleep(500);   //睡眠500毫秒，模拟线程控制并发
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        log.warn("  ---------------provider " +COUNT.incrementAndGet() + " name = " + name);
+        log.warn("  ---------------provider " +COUNT.incrementAndGet() + " name = " + name + new Date().getTime());
         return resultList;
     }
 }
