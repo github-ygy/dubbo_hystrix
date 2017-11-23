@@ -7,6 +7,7 @@ import ygy.test.dubbo.hystrix.dto.StudentDto;
 import ygy.test.dubbo.hystrix.service.role.BarService;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by guoyao on 2017/11/23.
@@ -14,11 +15,14 @@ import java.util.List;
 public class BarServiceBar implements BarService {
     private static final Logger log=LoggerFactory.getLogger(BarServiceBar.class);
 
+    private static final AtomicInteger ATOMIC_INTEGER=new AtomicInteger(0);
+
 
     @Override
     public List<StudentDto> selectByName(String name) {
-
-        log.info(" - -- -- - - - - - rpc exception  mock :  " + name);
+        //计算降级次数
+        log.info(" - -- -- - - - - - rpc exception  mock :  " + name );
+        log.warn(" ================= bar count " + ATOMIC_INTEGER.incrementAndGet());
 
         StudentDto studentDto=new StudentDto();
         studentDto.setName(" is mock ");
