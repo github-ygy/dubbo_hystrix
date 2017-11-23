@@ -45,6 +45,10 @@
         </dubbo:method>
     </dubbo:service>
 
+    <!--
+        延迟暴露服务 ： delay="5000" 延迟五秒  delay ="-1" 延迟到spring加载完成后暴露服务
+    -->
+
     <dubbo:service weight="100" interface="ygy.test.dubbo.hystrix.service.role.StudentService" ref="studentService" />
 
     <dubbo:service weight="100" interface="ygy.test.dubbo.hystrix.service.role.BarService" ref="barService" />
