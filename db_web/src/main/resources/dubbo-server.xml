@@ -53,6 +53,7 @@
 
     <!--
         executes:控制服务端线程数量为10
+        accepts = 10 ：限制服务器端接受的连接不能超过 10 个
     -->
     <dubbo:service weight="100" executes="10" timeout="10000" interface="ygy.test.dubbo.hystrix.service.role.BarService" ref="barService" />
 

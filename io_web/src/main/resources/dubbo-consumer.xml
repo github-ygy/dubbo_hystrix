@@ -74,6 +74,8 @@
 
     <!--
         actives = 20  控制消费端调用线程数20
+       connections="10"  限制客户端服务使⽤连接不能超过 10
+       如果是⻓连接，⽐如 Dubbo 协议，connections 表示该服务对每个提供者建⽴的⻓连接数
     -->
     <!--<dubbo:reference id="barService" actives="20" interface="ygy.test.dubbo.hystrix.service.role.BarService" mock="ygy.test.dubbo.hystrix.service.BarServiceBar"/>-->
     <dubbo:reference id="barService" actives="5" interface="ygy.test.dubbo.hystrix.service.role.BarService" mock="ygy.test.dubbo.hystrix.service.BarServiceBar"/>
