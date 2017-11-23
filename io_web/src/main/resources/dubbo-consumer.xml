@@ -11,6 +11,9 @@
         check = false ;true注册订阅失败时报错
      -->
     <dubbo:registry address="zookeeper://47.94.200.13:2181"   />
+    <!--
+           lazy=true 延迟连接⽤于减少⻓连接数。当有调⽤发起时，再创建⻓连接
+    -->
     <dubbo:protocol name="dubbo" port="20880" />
 
     <!--<dubbo:service interface="ygy.test.dubbo.hystrix.service.role.RoleService" ref="roleService"/>-->
