@@ -70,8 +70,10 @@
     </dubbo:reference>
     <bean id="roleNotify" class="ygy.test.dubbo.hystrix.notify.RoleNotify" />
 
-    <dubbo:reference id="studentService" interface="ygy.test.dubbo.hystrix.service.role.StudentService" stub="ygy.test.dubbo.hystrix.service.StudentServiceStub">
-    </dubbo:reference>
+    <dubbo:reference id="studentService" interface="ygy.test.dubbo.hystrix.service.role.StudentService" stub="ygy.test.dubbo.hystrix.service.StudentServiceStub"/>
+
+    <dubbo:reference id="barService" interface="ygy.test.dubbo.hystrix.service.role.BarService" mock="ygy.test.dubbo.hystrix.service.BarServiceBar"/>
+
 
     <!--直连提供者 url="dubbo://47.94.200.13:20880" 绕过注册中心直连，常用于测试 -->
    <!-- <dubbo:reference url="dubbo://47.94.200.13:20880"
